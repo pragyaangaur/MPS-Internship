@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 
 # ── CONFIGURATION ─────────────────────────────────────────────────────────────
-DATA_PATH   = '/Users/pragyaangaur/Downloads/My Files/MPS Internship/sunspot-detectives-classifications.csv'
-OUTPUT_DIR  = '/Users/pragyaangaur/Downloads/My Files/MPS Internship/Outputs/Final_Run'
+DATA_PATH   = 'sunspot-detectives-classifications.csv'
+OUTPUT_DIR  = 'Outputs/Final_Run'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Final Selected Parameters
