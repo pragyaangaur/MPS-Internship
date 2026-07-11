@@ -1,6 +1,6 @@
 # Reconstruction of Daily Sunspot Numbers from Citizen-Science Image Annotations
 
-**Institution:** Max Planck Institute for Solar System Research (MPS), Goettingen  
+**Institution:** Max Planck Institute for Solar System Research (MPS), Göttingen  
 **Supervisor:** Dr. Natalie Krivova and Dr. Theodosios Chatzistergos  
 **Author:** Pragyaan Gaur  
 
