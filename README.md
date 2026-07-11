@@ -1,10 +1,10 @@
-# Reconstruction of Daily Sunspot Numbers from Zooniverse Data
+# MPS Internship
 
 **Institution:** Max Planck Institute for Solar System Research (MPS), Göttingen  
 **Supervisor:** Dr. Natalie Krivova and Dr. Theodosios Chatzistergos  
 **Author:** Pragyaan Gaur  
 
-This repository documents the methodology developed during an undergraduate research internship at the Max Planck Institute for Solar System Research. It represents work in progress and should not be interpreted as the official analysis pipeline of the Sunspot Detectives project by MPS Göttingen and INAF.
+This repository documents the methodology developed during an undergraduate research internship at the Max Planck Institute for Solar System Research. It represents work in progress and should not be interpreted as the official analysis pipeline of the joint Sunspot Detectives project conducted by MPS Göttingen and INAF.
 
 ---
 
