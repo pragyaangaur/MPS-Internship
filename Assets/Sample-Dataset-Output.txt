@@ -1,0 +1,124 @@
+VOLUNTEER QUALITY CONTROL
+                      volunteer_id       bias  scatter  n_overlap
+                       changd12846  -3.250000 6.701990          4
+not-logged-in-3a54a640299c084733f6  -2.500000 6.442049          6
+                         urbanohno  -0.500000 3.872983          4
+                            Feb991   1.945652 3.546874         46
+not-logged-in-1300545088faefe25aa3   9.500000 3.535534          2
+                        Lichtcurve   4.000000 3.366502          4
+                       Ginja-Ninja  -0.250000 3.336665         16
+                         IanBarber   1.133333 3.113718         15
+                            Rattus   1.857143 2.713418         14
+                            EvanB2  -0.634615 1.482299         52
+not-logged-in-fa2df690a858601d153a   0.000000 1.414214          2
+not-logged-in-447503340429f872536d  -1.000000 1.414214          2
+                          dantezoo   1.500000 1.290994          4
+                          robsch87   0.500000 1.000000          4
+                          2001-DDT   0.500000 1.000000          4
+                  Maya_needs_hours  -0.750000 0.957427          4
+                          sesalway   0.285714 0.951190          7
+                     NicolaPenfold  -0.600000 0.894427          5
+                              KoHi  -0.500000 0.707107          2
+not-logged-in-8005351c3ba8f2a79feb   0.500000 0.707107          2
+                            sosa01  -0.333333 0.577350          3
+                 star-lightcox.net  -0.142857 0.377964          7
+                          WRSunset   0.100000 0.223607          5
+                        rlawjddnsa   0.055556 0.166667          9
+                       Kauppakassi   0.000000 0.000000          1
+not-logged-in-945c94075c7f9825fd95   1.000000 0.000000          1
+not-logged-in-5e782051aebf85449557   0.000000 0.000000          1
+not-logged-in-5fb40076e6bc1184f151   2.000000 0.000000          1
+not-logged-in-8afd7dc7ea0858943088   2.000000 0.000000          1
+                        planetari7   2.000000 0.000000          1
+not-logged-in-cc97196aca2e44176304   0.000000 0.000000          1
+                           Dsilcox   0.000000 0.000000          1
+                        ElisabethB   0.000000 0.000000          1
+                      ClaireIrvine   0.000000 0.000000          1
+                           rwbodge  -3.000000 0.000000          1
+                         seemoua98   0.000000 0.000000          1
+                         Eathans01   0.000000 0.000000          2
+                         maxgalaxy   7.000000 0.000000          1
+not-logged-in-18488df778d08a5f834c  11.000000 0.000000          1
+                        FMEmralino   0.000000 0.000000          1
+                   LaurenHughes314   0.000000 0.000000          1
+                          Lennie88   0.000000 0.000000          1
+                             Iones   1.000000 0.000000          1
+                           Lusa_71   0.000000 0.000000          2
+                       Freakishley -11.000000 0.000000          1
+                          SDupree4   0.000000 0.000000          1
+                           Sag_Ank   3.000000 0.000000          1
+                     WEBs_in_space   1.000000 0.000000          1
+                        AngeliqueK   1.000000 0.000000          1
+                            FionnT   0.000000 0.000000          2
+                  Fernanda_Vallejo   0.000000 0.000000          1
+                     ericschreiber   0.000000 0.000000          3
+                            foxx86  -5.000000 0.000000          1
+                           jlacun1   0.000000 0.000000          1
+                        masuma.123   8.000000 0.000000          1
+                          Xavier_T   1.000000 0.000000          1
+
+Accepted:                    11
+Rejected (bad stats):        45
+No teolixx overlap:          263
+Total non-teolixx volunteers:319
+
+COVERAGE
+Total days:                  1472
+Total (day, group) pairs:    3335
+Single-volunteer groups:     2537 / 3335 (76.1%)
+Mean volunteers per group:   1.30
+
+DAILY COUNT STATISTICS
+count    1472.00
+mean       11.05
+std        11.27
+min         0.00
+25%         3.00
+50%         8.00
+75%        15.00
+max        94.00
+Zero-count days:             1
+High-uncertainty days:       22 (1.5%)
+
+HIGH-UNCERTAINTY DAYS
+day_id  daily_count  daily_uncertainty  n_groups  uncertainty_fraction
+ 00784     2.500000           3.535534         1              1.414214
+ 00251     8.000000          11.269428         1              1.408678
+ 01043     4.000000           4.242641         1              1.060660
+ 00897     9.000000           8.485281         1              0.942809
+ 00074     4.500000           3.535534         1              0.785674
+ 00283     3.250000           2.500000         2              0.769231
+ 00049     8.500000           6.363961         1              0.748701
+ 01321     2.000000           1.414214         1              0.707107
+ 00423     4.000000           2.828427         1              0.707107
+ 01766     6.000000           4.242641         1              0.707107
+ 00119     4.500000           3.109126         1              0.690917
+ 00671     2.333333           1.527525         1              0.654654
+ 00358     5.500000           3.535534         1              0.642824
+ 00264     2.666667           1.632993         1              0.612372
+ 00302    14.000000           8.485281         1              0.606092
+ 00234     3.500000           2.121320         1              0.606092
+ 01018     3.500000           2.121320         1              0.606092
+ 00046    10.000000           5.656854         1              0.565685
+ 00898    10.000000           5.656854         1              0.565685
+ 02301     6.500000           3.535534         2              0.543928
+ 02271    25.500000          13.435029         2              0.526864
+ 00178     6.333333           3.214550         1              0.507561
+
+TOP 10 HIGHEST COUNT DAYS
+day_id  daily_count  daily_uncertainty  n_groups quality_flag
+ 01789    94.000000           0.000000         7           ok
+ 01818    87.666667           2.309401        10           ok
+ 01777    78.500000           0.707107         6           ok
+ 01573    70.000000           0.000000         7           ok
+ 01623    65.333333           0.577350         5           ok
+ 01700    61.000000           0.000000         4           ok
+ 01755    60.500000           2.121320         7           ok
+ 00459    58.500000           0.707107         3           ok
+ 01744    58.000000           0.000000         6           ok
+ 01822    57.000000           0.000000         7           ok
+
+OUTPUTS
+Saved: daily_sunspot_numbers.csv
+Saved: group_sunspot_numbers.csv
+Saved: volunteer_stats.csv
