@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 
 # ── CONFIGURATION ─────────────────────────────────────────────────────────────
-DATA_PATH   = 'sunspot-detectives-classifications.csv'
-OUTPUT_DIR  = 'Outputs/Final_Run'
+DATA_PATH   = '/Users/pragyaangaur/Downloads/My Files/MPS Internship/sunspot-detectives-classifications.csv'
+OUTPUT_DIR  = '/Users/pragyaangaur/Downloads/My Files/MPS Internship/Outputs/Final_Run'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Final Selected Parameters
@@ -55,6 +55,10 @@ df[['day_id','group_id']] = df['subject_data'].apply(extract_filename).apply(pd.
 df['volunteer_id'] = df.apply(assign_volunteer_id, axis=1)
 df = df[df['volunteer_id'] != 'unknown']
 df = df.drop(columns=['annotations','subject_data','user_name','user_ip'])
+df['day_id_num'] = pd.to_numeric(df['day_id'], errors='coerce')
+n_before = len(df)
+df = df[df['day_id_num'] < 10000].drop(columns=['day_id_num'])
+print(f"   Day-ID cutoff filter: kept {len(df)} / {n_before} rows (day_id < 10000)")
 
 # ── STEP 2: TEOLIXX BENCHMARK CALIBRATION ─────────────────────────────────────
 print("2. Calibrating volunteers against benchmark (teolixx)...")
