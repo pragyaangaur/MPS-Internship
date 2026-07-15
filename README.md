@@ -74,7 +74,7 @@ where $\bar{y}$ is the mean of the reference counts over all shared image groups
 
 Two alternative metrics were evaluated in parallel and are documented in `notebooks/02_metric_refinement.ipynb`. Poisson-scaled scatter normalizes by $\sqrt{\bar{y}}$ rather than $\bar{y}$:
 
-$$S_{\text{poisson}} = \frac{S_{\text{abs}}}{\sqrt{\max(\bar{y},\; 1)}}$$
+$$S_{\text{poisson}} = \frac{S_{\text{abs}}}{\sqrt{\max(\bar{y},\ 1)}}$$
 
 This normalization is motivated by the assumption that sunspot counting errors follow Poisson statistics, under which the standard deviation of a count measurement scales as the square root of its expectation. The Poisson-scaled scatter therefore asks whether a volunteer's disagreement is consistent with Poisson noise, and is unity when the volunteer's scatter exactly matches the expected Poisson level. The group-weighted Z-score takes yet another approach, normalizing each individual residual by the empirical standard deviation of all volunteer counts for that specific image group before averaging over shared images:
 
@@ -139,7 +139,13 @@ To handle this, each individual classification within a given image group is con
 
 $$Z_{ij} = \frac{x_{ij} - \bar{x}_{j}}{\sigma_{j}}$$
 
-where $x_{ij}$ is the count submitted by volunteer $i$ for image group $j$, and $\bar{x}_{j}$ and $\sigma_{j}$ are the mean and standard deviation of all accepted-volunteer counts for that group. Classifications with $|Z_{ij}| > 2.5$ are rejected. For image groups where all volunteers agree exactly, $\sigma_{j} = 0$ and no outlier rejection is applied.
+where:
+
+- $x_{ij}$ is the count submitted by volunteer $i$ for image group $j$.
+- $\bar{x}_{j}$ is the mean of all accepted-volunteer counts for group $j$.
+- $\sigma_{j}$ is the corresponding standard deviation.
+
+Classifications with $|Z_{ij}| > 2.5$ are rejected. For image groups where all volunteers agree exactly, $\sigma_{j} = 0$ and no outlier rejection is applied.
 
 The Z-score threshold of 2.5 was selected by examining the empirical distribution of Z-scores across all image groups and comparing it to a standard normal distribution (Figure 8). The bulk of the distribution is consistent with Gaussian scatter, and the threshold at $\pm 2.5$ falls well into the tails, excluding only classifications that are incompatible with the group consensus under reasonable assumptions about the noise structure. This plot also serves as a retrospective validation: the approximate normality of the inter-volunteer deviation distribution among accepted observers supports the assumption that volunteer counts for a given image can be treated as independent draws from a distribution whose mean is close to the true count.
 
