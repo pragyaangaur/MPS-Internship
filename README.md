@@ -20,7 +20,7 @@ This repository documents the complete methodology for this transformation. The 
 
 ## Data Description
 
-The raw dataset is a CSV file of approximately 1 GB containing all volunteer classifications submitted to the Sunspot Detectives Zooniverse project. Each row corresponds to a single annotation event. The columns relevant to this analysis are: a unique classification identifier, the volunteer's registered username or IP address, an `annotations` field encoding the observer's count in a JSON structure, and a `subject_data` field encoding metadata about the solar image, including its filename. The image filename encodes two identifiers: a `day_id` identifying the observing session and a `group_id` identifying the image group within that session.
+The raw dataset is a CSV file of approximately 1 GB containing all volunteer classifications submitted to the Sunspot Detectives Zooniverse project. Each row corresponds to a single annotation event. The columns relevant to this analysis are: a unique classification identifier, the volunteer's registered username or IP address, an `annotations` field encoding the observer's count in a JSON structure, and a `subject_data` field encoding metadata about the solar image, including its filename. The image filename encodes two identifiers: a `day_id` identifying the observing session and a `group_id` identifying the image group within that session. Additionally, only the `day_id` with a value < 10,000 have been considered in this analysis since the quality of the source drawings changes beyond this point.
 
 A critical data engineering challenge encountered early in the analysis is that the `annotations` field is not serialized in a consistent format across the dataset. The field can appear as a top-level integer, a plain string representation of an integer, or a nested list-of-dictionaries structure where the count is stored either under a `value` key or, in a further variant, under a `label` key within the nested list. All four formats are valid annotations and must be handled correctly. An initial parser that treated only the first format silently discarded approximately 225,000 valid classifications, which were recovered by extending the parser to branch on the observed type structure. This is documented in `notebooks/01_early_development.ipynb` and reflects a general principle in large-scale citizen-science data reduction: format heterogeneity often appears as missing data and must be diagnosed explicitly rather than assumed to represent data loss.
 
@@ -32,10 +32,10 @@ Volunteer identity is constructed from two fields. Registered Zooniverse users a
 
 ### The Volunteer Population
 
-The 12,323 volunteers who contributed to the dataset exhibit a highly skewed participation distribution. Approximately 61 percent of participants annotated five or fewer images, with a median contribution of three images per participant. A long tail of highly active contributors performs the majority of the classification work: the top 50 volunteers account for approximately 33 percent of all classifications, and 85 volunteers each contributed more than 1,000 annotations.
+The 12,323 volunteers who contributed to the dataset show a skewed participation distribution. Approximately 35.2 percent of participants annotated five or fewer images, with a median contribution of 12 images per participant. A group of active contributors performs the majority of the classification work: the top 50 volunteers account for approximately 30.6 percent of all classifications, and 117 volunteers each contributed more than 1,000 annotations.
 
 <p align="center">
-  <img src="Assets/volunteer_activity_distribution.png" width="600">
+  <img src="Assets/07_volunteer_histogram.png" width="600">
   <br><i>Figure 1: Distribution of volunteer participation across the dataset, showing the heavily skewed nature of classification activity.</i>
 </p>
 
@@ -222,11 +222,15 @@ The temporal axis is indexed by the `day_id` field parsed from image filenames, 
 
 The calibration framework depends entirely on the availability of a reliable reference observer. If the reference observer's classifications contain systematic errors not captured in the pairwise comparison, those errors will propagate undetected into the accepted volunteer pool and the final time series. The quality of the reference observer is assumed but not independently validated within this pipeline.
 
+At the time of writing, relative scatter remains the operative filtering criterion in the pipeline, pending finalisation of an improved metric. Other diagnostic comparisons with Poisson-scaled and group-weighted alternatives have been documented and tested.
+
 Volunteer overlap with the reference observer is a prerequisite for inclusion, and the final time series is constructed from a subset of the full volunteer pool whose classifications happen to have been submitted for image groups also annotated by the reference observer. On observing days with sparse reference coverage, the number of calibrated volunteers contributing to the daily count may be small, increasing sampling uncertainty beyond what the formal propagated error captures.
 
 The within-group Z-score outlier rejection assumes approximate normality of the volunteer count distribution for a given image group. This assumption holds reasonably well for groups with many contributors but is not testable for image groups with very few accepted volunteers. Additionally, the Z-score is undefined for groups with zero variance across volunteers, and these groups are passed through without outlier filtering.
 
 The final daily count is a sum of per-group means, not a direct count of sunspots from a single image. It should be interpreted as a statistical estimate of the daily sunspot number, with uncertainty as propagated, rather than as a direct observational measurement.
+
+Several diagnostic anomalies were identified during development and remain open for future investigation: the within-group Z-score distribution exhibiting a peak near Z = −1 rather than Z = 0; and a localised region near sessions 1800-1900 where the running mean exceeds the surrounding daily counts. These were not resolved within the scope of this project phase.
 
 ---
 
